@@ -1,0 +1,32 @@
+def FindSubArr(len:Int,array:Array[Int]):String={
+  var min=Integer.MAX_VALUE;
+  var id=0
+  var arrRes=Array[Int]();
+  for(i<-0 to array.length-len){
+    var sum=0
+    var arr=Array[Int]();
+    for(j<-i to i+len-1){
+      arr=arr:+ array(j);
+      sum=sum+array(j)
+    }
+    if(sum<min){
+      arrRes=arr;
+      min=sum
+      id=i
+    }
+  }
+  var stringArr="[";
+  for (x <- arrRes )
+  {
+    stringArr=stringArr+x.toString();
+    stringArr=stringArr+","
+
+  }
+  stringArr=stringArr.substring(0,stringArr.length-1);
+  stringArr=stringArr+"]";
+  var result="value is "+min.toString() + " starting at index " + id.toString() +" and array looks like this "+ stringArr;
+  return result
+}
+
+var myarr:Array[Int] = Array(1,2,3,4,5,6,7,8,9,10)
+println(FindSubArr(2,myarr))
